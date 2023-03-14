@@ -1,0 +1,74 @@
+        https://hydcloud.rpsconsulting.in/console/#/
+         Kulathumani Santhosh	K04	rps@12345
+         
+         
+         Meeting link :  https://rpsconsulting1.webex.com/rpsconsulting1/j.php?MTID=m1e1224a8888a9ef6759d0438d1c810f9
+Meeting number : 2518 816 7162
+Password: win@123
+
+
+Hi Team Good MOrning, this  is srinadh from RPS-IT admin. 
+if any one facing issue with RPS Cloud lab Please ping here along with User id or call 9948205195. We are Happy to support you..
+
+
+> Node where your Kafka is running is kafka brokers
+> Atmoic unit of data is called Kakfa Message. it is array of byte. Raw form os storing any content. 
+> Message will have mandatory data : Payload and a optional metadata (key). 
+
+
+Kafka CLuster
+	- Broker(s)
+  	- Topic(s)
+    	- Partion(s)
+      	--Message(s)
+
+Batch:-
+
+> Batch is a collection of data. Reduce machine I/O and network I/O. let the producer batch the message.
+> With batch send multiple messages in one message and is a internal feature of Kafka.  
+
+
+Schema:-
+
+> Recommended way to use the message  to be represented as in Some  format. ( JSON or XML ) or use the Avro ( Row oriented system)
+
+Topic:-
+
+> Topic is a logical system write similar messages. It is a group of messages
+> Topic is made up of one or more number of partition(s)
+> Messages within a topic is always written in sequencial fashion when one partion ( Append only fashion)
+> when more than one partition the same will be written in parallel fashion
+
+Partion:-
+
+> Within every partion, FOR EVERY MESSAGE WE GOT A UNIQUE OFFSET-D
+> Offset id always start from 0 and i is always incremental.
+> We can only increase the partition and cannot delete the partition
+> Partioners is the one decide where to keep your messages Default partioner would be using a round robin method to assign the message. 
+> Key technical concept used for scalability that keeps Kafka unique from other Pub sub system. 
+
+
+1) Kafka Broker(s)
+	> it is the work horse and more brokers , more storage
+  > Data is stored in Kafka Broker.
+	> default port number is : 9092
+  
+ZooKeeper
+	> It is nothing but a simple key value store
+  > It is service discovery system that can be super fast with reads,writes and updates and also distributed and HA
+  > It can also be used as a Metdata manager
+	> Default port number is : 2181
+
+
+
+> Always start the Zookeeper before the Kafka server. it is      like master server relationship as broker depends on zookeper
+
+
+
+https://docs.google.com/spreadsheets/d/1NiWtMF7VF8p44fkwBaqLm7oPKrdDz-pZBiHryDl4AkI/edit?usp=sharing
+
+
+https://pastebin.com/AmFtsumU
+
+
+https://codeshare.io/9OWyKB
