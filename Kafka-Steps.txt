@@ -1,0 +1,43 @@
+
+
+To list topics:
+
+bin/kafka-topics.sh --zookeeper localhost:2181 --list
+
+To create topic:
+
+bin/kafka-topics.sh --zookeeper localhost:2181 --create --partitions 1 --replication-factor 1 --topic onlytime
+
+To describe topic:
+
+bin/kafka-topics.sh --zookeeper localhost:2181 --describe --topic onlytime
+
+To ALter topic:
+
+bin/kafka-topics.sh --zookeeper localhost:2181 --alter --topic onlytime --partitions 2
+
+To delete topic:
+
+bin/kafka-topics.sh --zookeeper localhost:2181 --delete --topic onlytime
+
+
+###################3
+
+Consumer:
+
+bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic wecandonow-topic --from-beginning
+
+bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic wecandonow-topic --partition 1 --from-beginning
+
+bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic test-topic --partition 1 --from-beginning
+
+############################
+Java:
+
+mvn compile
+
+Run Java:
+
+mvn exec:java -Dexec.mainClass="com.admatic.ProducerWithKey" -Dexec.args="wecandonow-topic"
+
+

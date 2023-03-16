@@ -1,0 +1,303 @@
+saravanan@wcandonow.com :~$ jps                                                                                                                                                                                                                                                                                                                                                                                        
+3909 Jps
+3551 Kafka
+3215 QuorumPeerMain
+saravanan@wcandonow.com :~$ bin/kafka-console-producer.sh --broker-list localhost:9092 --topic robotickitchen
+-bash: bin/kafka-console-producer.sh: No such file or directory
+saravanan@wcandonow.com :~$ cd kafka_2.11-2.2.2/
+saravanan@wcandonow.com :~/kafka_2.11-2.2.2$ bin/kafka-topics.sh --zookeeper localhost:2181 --describe --topic robochef
+Topic:robochef  PartitionCount:1        ReplicationFactor:1     Configs:
+        Topic: robochef Partition: 0    Leader: 0       Replicas: 0     Isr: 0
+saravanan@wcandonow.com :~/kafka_2.11-2.2.2$ bin/kafka-topics.sh --zookeeper localhost:2181 --describe --topic robotickitchen
+Topic:robotickitchen    PartitionCount:3        ReplicationFactor:1     Configs:
+        Topic: robotickitchen   Partition: 0    Leader: 0       Replicas: 0     Isr: 0
+        Topic: robotickitchen   Partition: 1    Leader: 0       Replicas: 0     Isr: 0
+        Topic: robotickitchen   Partition: 2    Leader: 0       Replicas: 0     Isr: 0
+saravanan@wcandonow.com :~/kafka_2.11-2.2.2$ vi config/server.properties
+saravanan@wcandonow.com :~/kafka_2.11-2.2.2$ cd ..
+saravanan@wcandonow.com :~$ ls
+kafka-logs  kafka_2.11-2.2.2  kafka_2.11-2.2.2.tgz  zookeeper
+saravanan@wcandonow.com :~$ ls
+kafka-logs  kafka_2.11-2.2.2  kafka_2.11-2.2.2.tgz  zookeeper
+saravanan@wcandonow.com :~$ cd kafka-logs/
+saravanan@wcandonow.com :~/kafka-logs$ ls
+__consumer_offsets-0   __consumer_offsets-22  __consumer_offsets-36  __consumer_offsets-5
+__consumer_offsets-1   __consumer_offsets-23  __consumer_offsets-37  __consumer_offsets-6
+__consumer_offsets-10  __consumer_offsets-24  __consumer_offsets-38  __consumer_offsets-7
+__consumer_offsets-11  __consumer_offsets-25  __consumer_offsets-39  __consumer_offsets-8
+__consumer_offsets-12  __consumer_offsets-26  __consumer_offsets-4   __consumer_offsets-9
+__consumer_offsets-13  __consumer_offsets-27  __consumer_offsets-40  cleaner-offset-checkpoint
+__consumer_offsets-14  __consumer_offsets-28  __consumer_offsets-41  log-start-offset-checkpoint
+__consumer_offsets-15  __consumer_offsets-29  __consumer_offsets-42  meta.properties
+__consumer_offsets-16  __consumer_offsets-3   __consumer_offsets-43  recovery-point-offset-checkpoint
+__consumer_offsets-17  __consumer_offsets-30  __consumer_offsets-44  replication-offset-checkpoint
+__consumer_offsets-18  __consumer_offsets-31  __consumer_offsets-45  robochef-0
+__consumer_offsets-19  __consumer_offsets-32  __consumer_offsets-46  robotickitchen-0
+__consumer_offsets-2   __consumer_offsets-33  __consumer_offsets-47  robotickitchen-1
+__consumer_offsets-20  __consumer_offsets-34  __consumer_offsets-48  robotickitchen-2
+__consumer_offsets-21  __consumer_offsets-35  __consumer_offsets-49
+saravanan@wcandonow.com :~/kafka-logs$ bin/kafka-topics.sh --zookeeper localhost:2181 --create --partitions 1 --replication-factor 1 --topic boaone
+-bash: bin/kafka-topics.sh: No such file or directory
+saravanan@wcandonow.com :~/kafka-logs$ cd ../kafka_2.11-2.2.2/
+saravanan@wcandonow.com :~/kafka_2.11-2.2.2$ bin/kafka-topics.sh --zookeeper localhost:2181 --create --partitions 1 --replication-factor 1 --topic boaone
+Created topic boaone.
+saravanan@wcandonow.com :~/kafka_2.11-2.2.2$ bin/kafka-topics.sh --zookeeper localhost:2181 --create --partitions 6 --replication-factor 1 --topic boasix
+Created topic boasix.
+saravanan@wcandonow.com :~/kafka_2.11-2.2.2$ cd -
+/home/ubuntu/kafka-logs
+saravanan@wcandonow.com :~/kafka-logs$ ls
+__consumer_offsets-0   __consumer_offsets-24  __consumer_offsets-4   boasix-0
+__consumer_offsets-1   __consumer_offsets-25  __consumer_offsets-40  boasix-1
+__consumer_offsets-10  __consumer_offsets-26  __consumer_offsets-41  boasix-2
+__consumer_offsets-11  __consumer_offsets-27  __consumer_offsets-42  boasix-3
+__consumer_offsets-12  __consumer_offsets-28  __consumer_offsets-43  boasix-4
+__consumer_offsets-13  __consumer_offsets-29  __consumer_offsets-44  boasix-5
+__consumer_offsets-14  __consumer_offsets-3   __consumer_offsets-45  cleaner-offset-checkpoint
+__consumer_offsets-15  __consumer_offsets-30  __consumer_offsets-46  log-start-offset-checkpoint
+__consumer_offsets-16  __consumer_offsets-31  __consumer_offsets-47  meta.properties
+__consumer_offsets-17  __consumer_offsets-32  __consumer_offsets-48  recovery-point-offset-checkpoint
+__consumer_offsets-18  __consumer_offsets-33  __consumer_offsets-49  replication-offset-checkpoint
+__consumer_offsets-19  __consumer_offsets-34  __consumer_offsets-5   robochef-0
+__consumer_offsets-2   __consumer_offsets-35  __consumer_offsets-6   robotickitchen-0
+__consumer_offsets-20  __consumer_offsets-36  __consumer_offsets-7   robotickitchen-1
+__consumer_offsets-21  __consumer_offsets-37  __consumer_offsets-8   robotickitchen-2
+__consumer_offsets-22  __consumer_offsets-38  __consumer_offsets-9
+__consumer_offsets-23  __consumer_offsets-39  boaone-0
+saravanan@wcandonow.com :~/kafka-logs$ bin/kafka-console-producer.sh --broker-list localhost:9092 --topic boaone
+-bash: bin/kafka-console-producer.sh: No such file or directory
+saravanan@wcandonow.com :~/kafka-logs$ cd -
+/home/ubuntu/kafka_2.11-2.2.2
+saravanan@wcandonow.com :~/kafka_2.11-2.2.2$ bin/kafka-console-producer.sh --broker-list localhost:9092 --topic boaone
+>hello god
+>how are you doing today?
+>hows life?
+>saravanan@wcandonow.com :~/kafka_2.11-2.2.2$
+saravanan@wcandonow.com :~/kafka_2.11-2.2.2$ cd -
+/home/ubuntu/kafka-logs
+saravanan@wcandonow.com :~/kafka-logs$ ls
+__consumer_offsets-0   __consumer_offsets-24  __consumer_offsets-4   boasix-0
+__consumer_offsets-1   __consumer_offsets-25  __consumer_offsets-40  boasix-1
+__consumer_offsets-10  __consumer_offsets-26  __consumer_offsets-41  boasix-2
+__consumer_offsets-11  __consumer_offsets-27  __consumer_offsets-42  boasix-3
+__consumer_offsets-12  __consumer_offsets-28  __consumer_offsets-43  boasix-4
+__consumer_offsets-13  __consumer_offsets-29  __consumer_offsets-44  boasix-5
+__consumer_offsets-14  __consumer_offsets-3   __consumer_offsets-45  cleaner-offset-checkpoint
+__consumer_offsets-15  __consumer_offsets-30  __consumer_offsets-46  log-start-offset-checkpoint
+__consumer_offsets-16  __consumer_offsets-31  __consumer_offsets-47  meta.properties
+__consumer_offsets-17  __consumer_offsets-32  __consumer_offsets-48  recovery-point-offset-checkpoint
+__consumer_offsets-18  __consumer_offsets-33  __consumer_offsets-49  replication-offset-checkpoint
+__consumer_offsets-19  __consumer_offsets-34  __consumer_offsets-5   robochef-0
+__consumer_offsets-2   __consumer_offsets-35  __consumer_offsets-6   robotickitchen-0
+__consumer_offsets-20  __consumer_offsets-36  __consumer_offsets-7   robotickitchen-1
+__consumer_offsets-21  __consumer_offsets-37  __consumer_offsets-8   robotickitchen-2
+__consumer_offsets-22  __consumer_offsets-38  __consumer_offsets-9
+__consumer_offsets-23  __consumer_offsets-39  boaone-0
+saravanan@wcandonow.com :~/kafka-logs$ cd boaone-0
+saravanan@wcandonow.com :~/kafka-logs/boaone-0$ ls
+00000000000000000000.index  00000000000000000000.log  00000000000000000000.timeindex  leader-epoch-checkpoint
+saravanan@wcandonow.com :~/kafka-logs/boaone-0$ ls
+00000000000000000000.index  00000000000000000000.log  00000000000000000000.timeindex  leader-epoch-checkpoint
+saravanan@wcandonow.com :~/kafka-logs/boaone-0$ ls -l
+total 8
+-rw-rw-r-- 1 ubuntu ubuntu 10485760 Mar 14 04:58 00000000000000000000.index
+-rw-rw-r-- 1 ubuntu ubuntu      247 Mar 14 05:01 00000000000000000000.log
+-rw-rw-r-- 1 ubuntu ubuntu 10485756 Mar 14 04:58 00000000000000000000.timeindex
+-rw-rw-r-- 1 ubuntu ubuntu        8 Mar 14 04:58 leader-epoch-checkpoint
+saravanan@wcandonow.com :~/kafka-logs/boaone-0$ cd -
+/home/ubuntu/kafka-logs
+saravanan@wcandonow.com :~/kafka-logs$ cd ../kafka_2.11-2.2.2/
+saravanan@wcandonow.com :~/kafka_2.11-2.2.2$ bin/kafka-console-producer.sh --broker-list localhost:9092 --topic boaone
+>hello from Robochef the robotic kitchen
+>saravanan@wcandonow.com :~/kafka_2.11-2.2.2$cd -
+/home/ubuntu/kafka-logs
+saravanan@wcandonow.com :~/kafka-logs$ ls -l boaone-0/
+total 8
+-rw-rw-r-- 1 ubuntu ubuntu 10485760 Mar 14 04:58 00000000000000000000.index
+-rw-rw-r-- 1 ubuntu ubuntu      354 Mar 14 05:04 00000000000000000000.log
+-rw-rw-r-- 1 ubuntu ubuntu 10485756 Mar 14 04:58 00000000000000000000.timeindex
+-rw-rw-r-- 1 ubuntu ubuntu        8 Mar 14 04:58 leader-epoch-checkpoint
+saravanan@wcandonow.com :~/kafka-logs$
+saravanan@wcandonow.com :~/kafka-logs$ ls boasix-*
+boasix-0:
+00000000000000000000.index  00000000000000000000.log  00000000000000000000.timeindex  leader-epoch-checkpoint
+
+boasix-1:
+00000000000000000000.index  00000000000000000000.log  00000000000000000000.timeindex  leader-epoch-checkpoint
+
+boasix-2:
+00000000000000000000.index  00000000000000000000.log  00000000000000000000.timeindex  leader-epoch-checkpoint
+
+boasix-3:
+00000000000000000000.index  00000000000000000000.log  00000000000000000000.timeindex  leader-epoch-checkpoint
+
+boasix-4:
+00000000000000000000.index  00000000000000000000.log  00000000000000000000.timeindex  leader-epoch-checkpoint
+
+boasix-5:
+00000000000000000000.index  00000000000000000000.log  00000000000000000000.timeindex  leader-epoch-checkpoint
+saravanan@wcandonow.com :~/kafka-logs$ ls -l boasix-*
+boasix-0:
+total 4
+-rw-rw-r-- 1 ubuntu ubuntu 10485760 Mar 14 04:59 00000000000000000000.index
+-rw-rw-r-- 1 ubuntu ubuntu        0 Mar 14 04:59 00000000000000000000.log
+-rw-rw-r-- 1 ubuntu ubuntu 10485756 Mar 14 04:59 00000000000000000000.timeindex
+-rw-rw-r-- 1 ubuntu ubuntu        8 Mar 14 04:59 leader-epoch-checkpoint
+
+boasix-1:
+total 4
+-rw-rw-r-- 1 ubuntu ubuntu 10485760 Mar 14 04:59 00000000000000000000.index
+-rw-rw-r-- 1 ubuntu ubuntu        0 Mar 14 04:59 00000000000000000000.log
+-rw-rw-r-- 1 ubuntu ubuntu 10485756 Mar 14 04:59 00000000000000000000.timeindex
+-rw-rw-r-- 1 ubuntu ubuntu        8 Mar 14 04:59 leader-epoch-checkpoint
+
+saravanan@wcandonow.com :~/kafka-logs$ cd ../kafka_2.11-2.2.2/                                                                                                                                                                                                                                                                                                                                                           [0/107]
+saravanan@wcandonow.com :~/kafka_2.11-2.2.2$ bin/kafka-console-producer.sh --broker-list localhost:9092 --topic boaone
+>hello from Robochef the robotic kitchen
+>saravanan@wcandonow.com :~/kafka_2.11-2.2.2$cd -
+/home/ubuntu/kafka-logs
+saravanan@wcandonow.com :~/kafka-logs$ ls -l boaone-0/
+total 8
+-rw-rw-r-- 1 ubuntu ubuntu 10485760 Mar 14 04:58 00000000000000000000.index
+-rw-rw-r-- 1 ubuntu ubuntu      354 Mar 14 05:04 00000000000000000000.log
+-rw-rw-r-- 1 ubuntu ubuntu 10485756 Mar 14 04:58 00000000000000000000.timeindex
+-rw-rw-r-- 1 ubuntu ubuntu        8 Mar 14 04:58 leader-epoch-checkpoint
+saravanan@wcandonow.com :~/kafka-logs$
+saravanan@wcandonow.com :~/kafka-logs$ ls boasix-*
+boasix-0:
+00000000000000000000.index  00000000000000000000.log  00000000000000000000.timeindex  leader-epoch-checkpoint
+
+boasix-1:
+00000000000000000000.index  00000000000000000000.log  00000000000000000000.timeindex  leader-epoch-checkpoint
+
+boasix-2:
+00000000000000000000.index  00000000000000000000.log  00000000000000000000.timeindex  leader-epoch-checkpoint
+
+boasix-3:
+00000000000000000000.index  00000000000000000000.log  00000000000000000000.timeindex  leader-epoch-checkpoint
+
+boasix-4:
+00000000000000000000.index  00000000000000000000.log  00000000000000000000.timeindex  leader-epoch-checkpoint
+
+boasix-5:
+00000000000000000000.index  00000000000000000000.log  00000000000000000000.timeindex  leader-epoch-checkpoint
+saravanan@wcandonow.com :~/kafka-logs$ ls -l boasix-*
+boasix-0:
+total 4
+-rw-rw-r-- 1 ubuntu ubuntu 10485760 Mar 14 04:59 00000000000000000000.index
+-rw-rw-r-- 1 ubuntu ubuntu        0 Mar 14 04:59 00000000000000000000.log
+-rw-rw-r-- 1 ubuntu ubuntu 10485756 Mar 14 04:59 00000000000000000000.timeindex
+-rw-rw-r-- 1 ubuntu ubuntu        8 Mar 14 04:59 leader-epoch-checkpoint
+
+boasix-1:
+total 4
+-rw-rw-r-- 1 ubuntu ubuntu 10485760 Mar 14 04:59 00000000000000000000.index
+-rw-rw-r-- 1 ubuntu ubuntu        0 Mar 14 04:59 00000000000000000000.log
+-rw-rw-r-- 1 ubuntu ubuntu 10485756 Mar 14 04:59 00000000000000000000.timeindex
+-rw-rw-r-- 1 ubuntu ubuntu        8 Mar 14 04:59 leader-epoch-checkpoint
+
+boasix-2:
+total 4
+-rw-rw-r-- 1 ubuntu ubuntu 10485760 Mar 14 04:59 00000000000000000000.index
+-rw-rw-r-- 1 ubuntu ubuntu        0 Mar 14 04:59 00000000000000000000.log
+-rw-rw-r-- 1 ubuntu ubuntu 10485756 Mar 14 04:59 00000000000000000000.timeindex
+-rw-rw-r-- 1 ubuntu ubuntu        8 Mar 14 04:59 leader-epoch-checkpoint
+
+boasix-3:
+total 4
+-rw-rw-r-- 1 ubuntu ubuntu 10485760 Mar 14 04:59 00000000000000000000.index
+-rw-rw-r-- 1 ubuntu ubuntu        0 Mar 14 04:59 00000000000000000000.log
+-rw-rw-r-- 1 ubuntu ubuntu 10485756 Mar 14 04:59 00000000000000000000.timeindex
+-rw-rw-r-- 1 ubuntu ubuntu        8 Mar 14 04:59 leader-epoch-checkpoint
+
+boasix-4:
+total 4
+-rw-rw-r-- 1 ubuntu ubuntu 10485760 Mar 14 04:59 00000000000000000000.index
+-rw-rw-r-- 1 ubuntu ubuntu        0 Mar 14 04:59 00000000000000000000.log
+-rw-rw-r-- 1 ubuntu ubuntu 10485756 Mar 14 04:59 00000000000000000000.timeindex
+-rw-rw-r-- 1 ubuntu ubuntu        8 Mar 14 04:59 leader-epoch-checkpoint
+
+boasix-5:
+total 4
+-rw-rw-r-- 1 ubuntu ubuntu 10485760 Mar 14 04:59 00000000000000000000.index
+-rw-rw-r-- 1 ubuntu ubuntu        0 Mar 14 04:59 00000000000000000000.log
+-rw-rw-r-- 1 ubuntu ubuntu 10485756 Mar 14 04:59 00000000000000000000.timeindex
+-rw-rw-r-- 1 ubuntu ubuntu        8 Mar 14 04:59 leader-epoch-checkpoint
+saravanan@wcandonow.com :~/kafka-logs$ ls -l boasix-* | grep *.log
+saravanan@wcandonow.com :~/kafka-logs$ ls -l boasix-* | grep ".log"
+-rw-rw-r-- 1 ubuntu ubuntu        0 Mar 14 04:59 00000000000000000000.log
+-rw-rw-r-- 1 ubuntu ubuntu        0 Mar 14 04:59 00000000000000000000.log
+-rw-rw-r-- 1 ubuntu ubuntu        0 Mar 14 04:59 00000000000000000000.log
+-rw-rw-r-- 1 ubuntu ubuntu        0 Mar 14 04:59 00000000000000000000.log
+-rw-rw-r-- 1 ubuntu ubuntu        0 Mar 14 04:59 00000000000000000000.log
+-rw-rw-r-- 1 ubuntu ubuntu        0 Mar 14 04:59 00000000000000000000.log
+saravanan@wcandonow.com :~/kafka-logs$ ../kafka_2.11-2.2.2/bin/kafka-console-producer.sh --broker-list localhost:9092 --topic boasix
+>hello
+>saravanan@wcandonow.com :~/kafka-logs$ ls -l boasix-* | grep ".log"
+-rw-rw-r-- 1 ubuntu ubuntu       73 Mar 14 05:07 00000000000000000000.log
+-rw-rw-r-- 1 ubuntu ubuntu        0 Mar 14 04:59 00000000000000000000.log
+-rw-rw-r-- 1 ubuntu ubuntu        0 Mar 14 04:59 00000000000000000000.log
+-rw-rw-r-- 1 ubuntu ubuntu        0 Mar 14 04:59 00000000000000000000.log
+-rw-rw-r-- 1 ubuntu ubuntu        0 Mar 14 04:59 00000000000000000000.log
+-rw-rw-r-- 1 ubuntu ubuntu        0 Mar 14 04:59 00000000000000000000.log
+saravanan@wcandonow.com :~/kafka-logs$ ../kafka_2.11-2.2.2/bin/kafka-console-producer.sh --broker-list localhost:9092 --topic boasix
+>hello
+>hello
+>hello
+>hello
+>saravanan@wcandonow.com :~/kafka-logs$ ls -l boasix-* | grep ".log"
+-rw-rw-r-- 1 ubuntu ubuntu       73 Mar 14 05:07 00000000000000000000.log
+-rw-rw-r-- 1 ubuntu ubuntu        0 Mar 14 04:59 00000000000000000000.log
+-rw-rw-r-- 1 ubuntu ubuntu       73 Mar 14 05:08 00000000000000000000.log
+-rw-rw-r-- 1 ubuntu ubuntu       73 Mar 14 05:08 00000000000000000000.log
+-rw-rw-r-- 1 ubuntu ubuntu       73 Mar 14 05:08 00000000000000000000.log
+-rw-rw-r-- 1 ubuntu ubuntu       73 Mar 14 05:07 00000000000000000000.log
+saravanan@wcandonow.com :~/kafka-logs$ ../kafka_2.11-2.2.2/bin/kafka-console-producer.sh --broker-list localhost:9092 --topic boasix
+>1
+>2
+>3
+>4
+>5
+>6
+>7
+>8
+>9
+>110
+>qwe
+>qsx
+>qaz
+>saravanan@wcandonow.com :~/kafka-logs$ ls -l boasix-* | grep ".log"
+-rw-rw-r-- 1 ubuntu ubuntu      213 Mar 14 05:12 00000000000000000000.log
+-rw-rw-r-- 1 ubuntu ubuntu      140 Mar 14 05:12 00000000000000000000.log
+-rw-rw-r-- 1 ubuntu ubuntu      211 Mar 14 05:12 00000000000000000000.log
+-rw-rw-r-- 1 ubuntu ubuntu      211 Mar 14 05:12 00000000000000000000.log
+-rw-rw-r-- 1 ubuntu ubuntu      282 Mar 14 05:12 00000000000000000000.log
+-rw-rw-r-- 1 ubuntu ubuntu      213 Mar 14 05:12 00000000000000000000.log
+saravanan@wcandonow.com :~/kafka-logs$ cd ../kafka_2.11-2.2.2/
+saravanan@wcandonow.com :~/kafka_2.11-2.2.2$ bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic boaone --from-beginning
+hello god
+how are you doing today?
+hows life?
+hello from Robochef the robotic kitchen
+^CProcessed a total of 4 messages
+saravanan@wcandonow.com :~/kafka_2.11-2.2.2$ bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic boasix --from-beginning
+hello
+2
+8
+hello
+3
+9
+4
+110
+hello
+5
+qwe
+hello
+6
+qsx
+hello
+1
+7
+qaz
+^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^CProcessed a total of 18 messages
+saravanan@wcandonow.com :~/kafka_2.11-2.2.2$
+saravanan@wcandonow.com :~/kafka_2.11-2.2.2$
