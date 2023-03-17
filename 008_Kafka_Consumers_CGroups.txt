@@ -1,0 +1,69 @@
+ubuntu@ip-172-31-42-149:~/kafka_2.11-2.2.2$ bin/kafka-topics.sh --zookeeper localhost:2181 --create --partitions 3 --replication-factor 1 --topic wecandonow
+Created topic wecandonow.
+ubuntu@ip-172-31-42-149:~/kafka_2.11-2.2.2$ bin/kafka-topics.sh --zookeeper localhost:2181 --list
+wecandonow
+ubuntu@ip-172-31-42-149:~/kafka_2.11-2.2.2$ bin/kafka-topics.sh --zookeeper localhost:2181 --describe --topic wecandonow
+Topic:wecandonow        PartitionCount:3        ReplicationFactor:1     Configs:
+        Topic: wecandonow       Partition: 0    Leader: 0       Replicas: 0     Isr: 0
+        Topic: wecandonow       Partition: 1    Leader: 0       Replicas: 0     Isr: 0
+        Topic: wecandonow       Partition: 2    Leader: 0       Replicas: 0     Isr: 0
+ubuntu@ip-172-31-42-149:~/kafka_2.11-2.2.2$
+ubuntu@ip-172-31-42-149:~/kafka_2.11-2.2.2$ ../kafka_2.11-2.2.2/bin/kafka-console-producer.sh --broker-list localhost:9092 --topic wecandonow
+>hello god
+>hows
+>life?
+ubuntu@ip-172-31-42-149:~/kafka_2.11-2.2.2$ bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic wecandonow --from-beginning
+hows
+life?
+hello god
+^CProcessed a total of 3 messages
+
+
+ubuntu@ip-172-31-42-149:~/kafka_2.11-2.2.2$ bin/kafka-console-consumer.sh --bootubuntu@ip-172-ubuntu@ip-172-31-42-149:~/kafka_2.11-2.2.2$ bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic wecandonow --group "sales"
+hello
+god
+is
+how
+your
+life
+going
+ONE
+TWO
+FOUR
+FIVE
+
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+ubuntu@ip-172-31-42-149:~/kafka_2.11-2.2.2$ bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic wecandonow --group "sales"
+THREE
+SIX
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+ubuntu@ip-172-31-42-149:~/kafka_2.11-2.
+ubuntu@ip-172-31-42-149:~/kafka_2.11-2.2.2$ ../kafka_2.11-2.2.2/bin/kafka-console-producer.sh --broker-list localhost:9092 --topic wecandonow
+>hello
+>god
+>how
+>is
+>your
+>life
+>going
+>ONE
+>TWO
+>THREE
+>FOUR
+>FIVE
+>SIX
+>

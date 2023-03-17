@@ -1,0 +1,236 @@
+ubuntu@ip-172-31-42-149:~/kafka_2.11-2.2.2$ jps
+1618 Kafka
+1974 Jps
+1302 QuorumPeerMain
+ubuntu@ip-172-31-42-149:~/kafka_2.11-2.2.2$ bin/kafka-topics.sh --zookeeper localhost:2181 --create --partitions 3 --replication-factor 1 --topic wecandonow
+Created topic wecandonow.
+ubuntu@ip-172-31-42-149:~/kafka_2.11-2.2.2$ bin/kafka-topics.sh --zookeeper localhost:2181 --list
+wecandonow
+ubuntu@ip-172-31-42-149:~/kafka_2.11-2.2.2$ bin/kafka-topics.sh --zookeeper localhost:2181 --describe --topic wecandonow
+Topic:wecandonow        PartitionCount:3        ReplicationFactor:1     Configs:
+        Topic: wecandonow       Partition: 0    Leader: 0       Replicas: 0     Isr: 0
+        Topic: wecandonow       Partition: 1    Leader: 0       Replicas: 0     Isr: 0
+        Topic: wecandonow       Partition: 2    Leader: 0       Replicas: 0     Isr: 0
+ubuntu@ip-172-31-42-149:~/kafka_2.11-2.2.2$
+ubuntu@ip-172-31-42-149:~/kafka_2.11-2.2.2$ ../kafka_2.11-2.2.2/bin/kafka-console-producer.sh --broker-list localhost:9092 --topic wecandonow
+>hello god
+>hows
+>life?
+ubuntu@ip-172-31-42-149:~/kafka_2.11-2.2.2$ bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic wecandonow --from-beginning
+hows
+life?
+hello god
+^CProcessed a total of 3 messages
+ubuntu@ip-172-31-42-149:~/kafka_2.11-2.2.2$
+
+ubuntu@ip-172-31-42-149:~/kafka_2.11-2.2.2$ bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic wecandonow --group "sales"
+THREE
+SIX
+^CProcessed a total of 2 messages
+ubuntu@ip-172-31-42-149:~/kafka_2.11-2.2.2$ bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic wecandonow --group "sales"
+ubuntu@ip-172-31-42-149:~/kafka_2.11-2.2.2$ bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic wecandonow --group "sales"
+nilaadhu
+2
+5
+
+
+
+
+
+
+
+
+
+
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+ubuntu@ip-172-31-42-149:~/kafka_2.11-2.2.2$ bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic wecandonow --group "sales"
+badblood
+blindinglights
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+ubuntu@ip-172-31-42-149:~/kafka_2.11-2.2.2$ bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic wecandonow --group "sales"
+rajarajacholan
+3
+6
+
+
+
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+ubuntu@ip-172-31-42-149:~/kafka_2.11-2.2.2$ bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic wecandonow --group "sales"
+1
+4
+7
+
+
+
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+>life
+>going
+>ONE
+>TWO
+>THREE
+>FOUR
+>FIVE
+>SIX
+>^Cubuntu@ip-172-31-42-149:~/kafka_2.11-2.2.2$ ../kafka_2.11-2.2.2/bin/kafka-console-producer.sh --broker-list localhost:9092 --topic wecandonow
+>badblood
+>rajarajacholan
+>nilaadhu
+>blindinglights
+>1
+>2
+>3
+>4
+>5
+>6
+>7
+>
+
+
+ubuntu@ip-172-31-42-149:~/kafka_2.11-2.2.2$ bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --describe --group sales
+
+TOPIC           PARTITION  CURRENT-OFFSET  LOG-END-OFFSET  LAG             CONSUMER-ID                                     HOST            CLIENT-ID
+wecandonow      0          5               5               0               consumer-1-93cadc77-76f0-4966-b645-f36376b7c504 /172.31.42.149  consumer-1
+wecandonow      1          5               5               0               consumer-1-93cadc77-76f0-4966-b645-f36376b7c504 /172.31.42.149  consumer-1
+wecandonow      2          6               6               0               consumer-1-fdebc4c0-a780-4118-a612-208bba7e05dd /172.31.42.149  consumer-1
+ubuntu@ip-172-31-42-149:~/kafka_2.11-2.2.2$ bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --describe --group sales
+Consumer group 'sales' has no active members.
+
+TOPIC           PARTITION  CURRENT-OFFSET  LOG-END-OFFSET  LAG             CONSUMER-ID     HOST            CLIENT-ID
+wecandonow      0          5               5               0               -               -               -
+wecandonow      2          6               6               0               -               -               -
+wecandonow      1          5               5               0               -               -               -
+ubuntu@ip-172-31-42-149:~/kafka_2.11-2.2.2$ bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --describe --group sales
+TOPIC           PARTITION  CURRENT-OFFSET  LOG-END-OFFSET  LAG             CONSUMER-ID                                     HOST            CLIENT-ID
+wecandonow      0          5               5               0               consumer-1-5c85fe72-71b3-4fc9-8fe0-55f0b023c479 /172.31.42.149  consumer-1
+wecandonow      1          5               5               0               consumer-1-5c85fe72-71b3-4fc9-8fe0-55f0b023c479 /172.31.42.149  consumer-1
+wecandonow      2          6               6               0               consumer-1-5c85fe72-71b3-4fc9-8fe0-55f0b023c479 /172.31.42.149  consumer-1
+ubuntu@ip-172-31-42-149:~/kafka_2.11-2.2.2$ bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --describe --group sales
+
+TOPIC           PARTITION  CURRENT-OFFSET  LOG-END-OFFSET  LAG             CONSUMER-ID                                     HOST            CLIENT-ID
+wecandonow      0          5               5               0               consumer-1-5c85fe72-71b3-4fc9-8fe0-55f0b023c479 /172.31.42.149  consumer-1
+wecandonow      1          5               5               0               consumer-1-5c85fe72-71b3-4fc9-8fe0-55f0b023c479 /172.31.42.149  consumer-1
+wecandonow      2          6               6               0               consumer-1-dfbbb007-b1e7-47a3-bf12-1149d2b9cb9f /172.31.42.149  consumer-1
+ubuntu@ip-172-31-42-149:~/kafka_2.11-2.2.2$ bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --describe --group sales
+
+TOPIC           PARTITION  CURRENT-OFFSET  LOG-END-OFFSET  LAG             CONSUMER-ID                                     HOST            CLIENT-ID
+wecandonow      2          6               6               0               consumer-1-dfbbb007-b1e7-47a3-bf12-1149d2b9cb9f /172.31.42.149  consumer-1
+wecandonow      1          5               5               0               consumer-1-a093dd98-fff5-4b46-8485-08d3e4d5d7cc /172.31.42.149  consumer-1
+wecandonow      0          5               5               0               consumer-1-5c85fe72-71b3-4fc9-8fe0-55f0b023c479 /172.31.42.149  consumer-1
+ubuntu@ip-172-31-42-149:~/kafka_2.11-2.2.2$ bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --describe --group sales
+
+TOPIC           PARTITION  CURRENT-OFFSET  LOG-END-OFFSET  LAG             CONSUMER-ID                                     HOST            CLIENT-ID
+wecandonow      1          6               6               0               consumer-1-8ebc5d93-7793-47b8-b4e5-ae42f0e48024 /172.31.42.149  consumer-1
+wecandonow      2          8               8               0               consumer-1-a093dd98-fff5-4b46-8485-08d3e4d5d7cc /172.31.42.149  consumer-1
+wecandonow      0          6               6               0               consumer-1-5c85fe72-71b3-4fc9-8fe0-55f0b023c479 /172.31.42.149  consumer-1
+ubuntu@ip-172-31-42-149:~/kafka_2.11-2.2.2$ bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --describe --group sales
+
+TOPIC           PARTITION  CURRENT-OFFSET  LOG-END-OFFSET  LAG             CONSUMER-ID                                     HOST            CLIENT-ID
+wecandonow      1          6               6               0               consumer-1-8ebc5d93-7793-47b8-b4e5-ae42f0e48024 /172.31.42.149  consumer-1
+wecandonow      2          8               8               0               consumer-1-a093dd98-fff5-4b46-8485-08d3e4d5d7cc /172.31.42.149  consumer-1
+wecandonow      0          6               6               0               consumer-1-5c85fe72-71b3-4fc9-8fe0-55f0b023c479 /172.31.42.149  consumer-1
+ubuntu@ip-172-31-42-149:~/kafka_2.11-2.2.2$ bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --describe --group sales
+
+TOPIC           PARTITION  CURRENT-OFFSET  LOG-END-OFFSET  LAG             CONSUMER-ID                                     HOST            CLIENT-ID
+wecandonow      1          6               6               0               consumer-1-8ebc5d93-7793-47b8-b4e5-ae42f0e48024 /172.31.42.149  consumer-1
+wecandonow      2          8               8               0               consumer-1-a093dd98-fff5-4b46-8485-08d3e4d5d7cc /172.31.42.149  consumer-1
+wecandonow      0          6               6               0               consumer-1-5c85fe72-71b3-4fc9-8fe0-55f0b023c479 /172.31.42.149  consumer-1
+ubuntu@ip-172-31-42-149:~/kafka_2.11-2.2.2$
+
+
+
+
+Create Kafka Topic
+ubuntu@ip-172-31-16-84:~/kafka_2.11-2.2.2$ jps
+
+1872 Kafka
+2562 Jps
+2227 Kafka
+1195 QuorumPeerMain
+1516 Kafka
+Create Kafka Topic
+ubuntu@ip-172-31-16-84:~/kafka_2.11-2.2.2$ bin/kafka-topics.sh --create --zookeeper localhost:2181 --topic wecandonow-topic --partitions 5 --replication-factor 1
+
+Created topic wecandonow-topic.
+ubuntu@ip-172-31-16-84:~/kafka_2.11-2.2.2$ bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --list
+start one consumer on another terminal
+ubuntu@ip-172-31-16-84:~/kafka_2.11-2.2.2$ bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --list
+wecandonow-group
+open another terminal and start a consumer (of same consumer group )
+ubuntu@ip-172-31-16-84:~/WeCanDoNow-Kafka-Consumer$ mvn exec:java -Dexec.mainClass="com.wecandonow.Consumer" -Dexec.args="wecandonow-topic"
+[INFO]
+[INFO] --- exec-maven-plugin:3.1.0:java (default-cli) @ Kafka-Producer ---
+log4j:WARN No appenders could be found for logger (org.apache.kafka.clients.consumer.ConsumerConfig).
+log4j:WARN Please initialize the log4j system properly.
+log4j:WARN See http://logging.apache.org/log4j/1.2/faq.html#noconfig for more info.
+partition = 2, offset = 30, key = null, value = 5151
+partition = 3, offset = 30, key = null, value = 5152
+partition = 0, offset = 30, key = null, value = 5153
+partition = 1, offset = 30, key = null, value = 5154
+partition = 4, offset = 30, key = null, value = 5155
+partition = 2, offset = 31, key = null, value = 5156
+ubuntu@ip-172-31-16-84:~/kafka_2.11-2.2.2$ bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --describe --group wecandonow-group
+
+TOPIC            PARTITION  CURRENT-OFFSET  LOG-END-OFFSET  LAG             CONSUMER-ID                                     HOST            CLIENT-ID
+wecandonow-topic 2          15              15              0               consumer-1-1ed56d2a-d088-42ee-9140-0fd9325aec70 /172.31.16.84   consumer-1
+wecandonow-topic 1          15              15              0               consumer-1-1ed56d2a-d088-42ee-9140-0fd9325aec70 /172.31.16.84   consumer-1
+wecandonow-topic 4          15              15              0               consumer-1-1ed56d2a-d088-42ee-9140-0fd9325aec70 /172.31.16.84   consumer-1
+wecandonow-topic 0          14              14              0               consumer-1-1ed56d2a-d088-42ee-9140-0fd9325aec70 /172.31.16.84   consumer-1
+wecandonow-topic 3          15              15              0               consumer-1-1ed56d2a-d088-42ee-9140-0fd9325aec70 /172.31.16.84   consumer-1
+open another terminal and start a consumer (of same consumer group )
+ubuntu@ip-172-31-16-84:~/WeCanDoNow-Kafka-Consumer$ mvn exec:java -Dexec.mainClass="com.wecandonow.Consumer" -Dexec.args="wecandonow-topic2"
+[INFO]
+[INFO] --- exec-maven-plugin:3.1.0:java (default-cli) @ Kafka-Producer ---
+log4j:WARN No appenders could be found for logger (org.apache.kafka.clients.consumer.ConsumerConfig).
+log4j:WARN Please initialize the log4j system properly.
+log4j:WARN See http://logging.apache.org/log4j/1.2/faq.html#noconfig for more info.
+partition = 2, offset = 30, key = null, value = 5151
+partition = 3, offset = 30, key = null, value = 5152
+partition = 0, offset = 30, key = null, value = 5153
+partition = 1, offset = 30, key = null, value = 5154
+partition = 4, offset = 30, key = null, value = 5155
+partition = 2, offset = 31, key = null, value = 5156
+ubuntu@ip-172-31-16-84:~/kafka_2.11-2.2.2$ bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --describe --group wecandonow-group
+
+TOPIC            PARTITION  CURRENT-OFFSET  LOG-END-OFFSET  LAG             CONSUMER-ID                                     HOST            CLIENT-ID
+wecandonow-topic 0          29              29              0               consumer-1-1ed56d2a-d088-42ee-9140-0fd9325aec70 /172.31.16.84   consumer-1
+wecandonow-topic 1          30              30              0               consumer-1-1ed56d2a-d088-42ee-9140-0fd9325aec70 /172.31.16.84   consumer-1
+wecandonow-topic 2          29              29              0               consumer-1-1ed56d2a-d088-42ee-9140-0fd9325aec70 /172.31.16.84   consumer-1
+wecandonow-topic 3          29              29              0               consumer-1-55b3c56c-39a5-402c-be46-8d004928e7b3 /172.31.16.84   consumer-1
+wecandonow-topic 4          30              30              0               consumer-1-55b3c56c-39a5-402c-be46-8d004928e7b3 /172.31.16.84   consumer-1
+open another terminal and start a consumer (of same consumer group )
+ubuntu@ip-172-31-16-84:~/WeCanDoNow-Kafka-Consumer$ mvn exec:java -Dexec.mainClass="com.wecandonow.Consumer" -Dexec.args="wecandonow-topic"
+[INFO]
+[INFO] --- exec-maven-plugin:3.1.0:java (default-cli) @ Kafka-Producer ---
+log4j:WARN No appenders could be found for logger (org.apache.kafka.clients.consumer.ConsumerConfig).
+log4j:WARN Please initialize the log4j system properly.
+log4j:WARN See http://logging.apache.org/log4j/1.2/faq.html#noconfig for more info.
+partition = 2, offset = 30, key = null, value = 5151
+partition = 3, offset = 30, key = null, value = 5152
+partition = 0, offset = 30, key = null, value = 5153
+partition = 1, offset = 30, key = null, value = 5154
+partition = 4, offset = 30, key = null, value = 5155
+partition = 2, offset = 31, key = null, value = 5156
+ubuntu@ip-172-31-16-84:~/kafka_2.11-2.2.2$ bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --describe --group wecandonow-group
+
+TOPIC            PARTITION  CURRENT-OFFSET  LOG-END-OFFSET  LAG             CONSUMER-ID                                     HOST            CLIENT-ID
+wecandonow-topic 0          60              61              1               consumer-1-1ed56d2a-d088-42ee-9140-0fd9325aec70 /172.31.16.84   consumer-1
+wecandonow-topic 1          61              61              0               consumer-1-1ed56d2a-d088-42ee-9140-0fd9325aec70 /172.31.16.84   consumer-1
+wecandonow-topic 2          61              61              0               consumer-1-3f7c7a9d-13bd-41a8-ab2d-93cf7f472738 /172.31.16.84   consumer-1
+wecandonow-topic 3          61              61              0               consumer-1-3f7c7a9d-13bd-41a8-ab2d-93cf7f472738 /172.31.16.84   consumer-1
+wecandonow-topic 4          61              61              0               consumer-1-55b3c56c-39a5-402c-be46-8d004928e7b3 /172.31.16.84   consumer-1
